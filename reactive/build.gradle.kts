@@ -41,3 +41,12 @@ kotlin {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+tasks.register<Copy>("copyMigrations") {
+    from("../migrations")
+    include("*.sql")
+    into("src/main/resources/db.migration/")
+    dependsOn("processResources")
+}
+
+tasks.named("build") { dependsOn("copyMigrations") }

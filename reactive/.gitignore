@@ -38,3 +38,6 @@ out/
 
 ### Kotlin ###
 .kotlin
+
+### db migrations ###
+/src/main/resources/db.migration/*
