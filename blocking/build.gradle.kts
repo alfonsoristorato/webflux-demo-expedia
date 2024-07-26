@@ -45,7 +45,7 @@ tasks.withType<Test> {
 tasks.register<Copy>("copyMigrations") {
     from("../migrations")
     include("*.sql")
-    into("src/main/resources/db.migration/")
+    into("src/main/resources/db/migration")
     dependsOn("processResources")
 }
 

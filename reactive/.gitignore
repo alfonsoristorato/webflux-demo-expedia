@@ -40,4 +40,4 @@ out/
 .kotlin
 
 ### db migrations ###
-/src/main/resources/db.migration/*
+/src/main/resources/db/migration/*

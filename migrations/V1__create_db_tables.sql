@@ -9,7 +9,7 @@ CREATE TABLE post
     tags       VARCHAR[] NOT NULL,
     created_at TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
     updated_at TIMESTAMP WITHOUT TIME ZONE NULL,
-    CONSTRAINT pk_post PRIMARY KEY (id),
+    CONSTRAINT pk_post PRIMARY KEY (id)
 );
 CREATE TRIGGER update_timestamp
     BEFORE UPDATE

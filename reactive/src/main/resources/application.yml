@@ -1,0 +1,30 @@
+common:
+  db:
+    config:
+      auth: &common-db-config-auth
+        user: root
+        password: root
+      url: postgresql://localhost:5432/webflux-demo
+
+logging:
+  level:
+    org.springframework: INFO
+    io.r2dbc.postgresql.QUERY: INFO
+
+spring:
+  flyway:
+    url: jdbc:${common.db.config.url}
+    locations: classpath:db/migration
+    <<: *common-db-config-auth
+  r2dbc:
+    url: r2dbc:${common.db.config.url}
+    username: ${common.db.config.auth.user}
+    password: ${common.db.config.auth.password}
+  application:
+    name: reactive
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/mocked
+          jwk-set-uri: http://localhost:8081/mocked/jwks

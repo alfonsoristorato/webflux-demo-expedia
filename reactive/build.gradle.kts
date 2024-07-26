@@ -22,6 +22,18 @@ repositories {
 dependencies {
     // Spring and Configuration
     implementation(serviceLibs.spring.boot.starter.webflux)
+    implementation(serviceLibs.spring.boot.starter.data.r2dbc)
+    implementation(serviceLibs.spring.boot.starter.actuator)
+    implementation(serviceLibs.spring.boot.starter.oauth2.resource.server)
+    implementation(serviceLibs.spring.boot.starter.security)
+
+    // Persistence
+    implementation(serviceLibs.postgresql.r2dbc)
+
+    // Flyway
+    implementation(serviceLibs.flyway.core)
+    implementation(serviceLibs.flyway.database.postgresql)
+    implementation(serviceLibs.postgresql)
 
     // Kotlin specific
     implementation(serviceLibs.jackson.module.kotlin)
@@ -45,7 +57,7 @@ tasks.withType<Test> {
 tasks.register<Copy>("copyMigrations") {
     from("../migrations")
     include("*.sql")
-    into("src/main/resources/db.migration/")
+    into("src/main/resources/db/migration")
     dependsOn("processResources")
 }
 
