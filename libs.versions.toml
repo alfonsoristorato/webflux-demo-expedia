@@ -1,0 +1,56 @@
+# Keep alphabetical please
+[versions]
+flyway                                              = "10.15.2"
+gradle-ktlint                                       = "12.1.1"
+jackson-module-kotlin                               = "2.17.2"
+kotlinx-coroutines-reactor                          = "1.9.0-RC"
+kotlin-plugin-version                               = "1.9.22"
+kotlin-reflect                                      = "2.0.0"
+postgresql                                          = "42.7.3"
+postgresql-r2dbc                                    = "1.0.5.RELEASE"
+reactor-kotlin-extensions                           = "1.2.2"
+spring-boot                                         = "3.3.1"
+spring-dependency-management                        = "1.1.6"
+spring-doc-openapi-webflux                          = "2.6.0"
+
+#TEST VERSIONS
+test-mockito-inline                                 = "5.2.0"
+test-mockito-kotlin                                 = "5.4.0"
+test-reactor-test                                   = "3.6.8"
+test-testcontainers                                 = "1.19.8"
+
+[libraries]
+flyway-core                                         = { module = "org.flywaydb:flyway-core", version.ref = "flyway" }
+flyway-database-postgresql                          = { module = "org.flywaydb:flyway-database-postgresql", version.ref = "flyway" }
+jackson-module-kotlin                               = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson-module-kotlin"}
+kotlin-reflect                                      = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin-reflect" }
+kotlinx-coroutines-reactor                          = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-reactor", version.ref = "kotlinx-coroutines-reactor" }
+postgresql                                          = { module = "org.postgresql:postgresql", version.ref = "postgresql" }
+postgresql-r2dbc                                    = { module = "org.postgresql:r2dbc-postgresql", version.ref = "postgresql-r2dbc" }
+reactor-kotlin-extensions                           = { module = "io.projectreactor.kotlin:reactor-kotlin-extensions", version.ref = "reactor-kotlin-extensions" }
+spring-boot-starter                                 = { module = "org.springframework.boot:spring-boot-starter" }
+spring-boot-starter-actuator                        = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-boot-starter-data-r2dbc                      = { module = "org.springframework.boot:spring-boot-starter-data-r2dbc" }
+spring-boot-starter-oauth2-resource-server          = { module = "org.springframework.boot:spring-boot-starter-oauth2-resource-server" }
+spring-boot-starter-security                        = { module = "org.springframework.boot:spring-boot-starter-security" }
+spring-boot-starter-validation                      = { module = "org.springframework.boot:spring-boot-starter-validation" }
+spring-boot-starter-webflux                         = { module = "org.springframework.boot:spring-boot-starter-webflux" }
+spring-doc-openapi-webflux-api                      = { module = "org.springdoc:springdoc-openapi-starter-webflux-api", version.ref = "spring-doc-openapi-webflux" }
+spring-doc-openapi-webflux-ui                       = { module = "org.springdoc:springdoc-openapi-starter-webflux-ui", version.ref = "spring-doc-openapi-webflux" }
+
+#TEST LIBS
+test-mockito-inline                                 = { module = "org.mockito:mockito-inline", version.ref = "test-mockito-inline" }
+test-mockito-kotlin                                 = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "test-mockito-kotlin" }
+test-reactor-test                                   = { module = "io.projectreactor:reactor-test", version.ref = "test-reactor-test" }
+test-spring-boot-starter-test                       = { module = "org.springframework.boot:spring-boot-starter-test" }
+test-spring-security-test                           = { module = "org.springframework.security:spring-security-test" }
+test-spring-boot-testcontainers                     = { module = "org.springframework.boot:spring-boot-testcontainers" }
+test-testcontainers-junit-jupiter                   = { module = "org.testcontainers:junit-jupiter", version.ref = "test-testcontainers" }
+test-testcontainers-r2dbc                           = { module = "org.testcontainers:r2dbc", version.ref = "test-testcontainers" }
+test-testcontainers-postgresql                      = { module = "org.testcontainers:postgresql", version.ref = "test-testcontainers" }
+
+[plugins]
+gradle-ktlint                                       = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "gradle-ktlint"}
+spring-boot                                         = { id = "org.springframework.boot", version.ref = "spring-boot"}
+spring-dependency-management                        = { id = "io.spring.dependency-management", version.ref = "spring-dependency-management"}
+
