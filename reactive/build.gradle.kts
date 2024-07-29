@@ -37,6 +37,7 @@ dependencies {
 
     // Kotlin specific
     implementation(serviceLibs.jackson.module.kotlin)
+    implementation(serviceLibs.reactor.kotlin.extensions)
     implementation(serviceLibs.kotlin.reflect)
 
     // Testing
@@ -46,7 +47,7 @@ dependencies {
 kotlin {
     compilerOptions {
         freeCompilerArgs.addAll("-Xjsr305=strict")
-        allWarningsAsErrors = false
+        allWarningsAsErrors = true
     }
 }
 

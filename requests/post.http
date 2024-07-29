@@ -1,0 +1,58 @@
+### Get a Post by Id without comments
+GET {{serviceHost}}/post/{{postId}}/without-comments
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+### Get a Post by Id with comments flatMapping
+GET {{serviceHost}}/post/{{postId}}/with-comments-flatMapping
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+### Get a Post by Id with comments zipping
+GET {{serviceHost}}/post/{{postId}}/with-comments-zipping
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+### Get a Post by Id with comments zipping and is beautiful
+GET {{serviceHost}}/post/{{postId}}/with-comments-zipping-and-is-beautiful
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+### Add a Post
+POST {{serviceHost}}/post/add
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+  "content": "My post",
+  "tags": [
+    "TAG"
+  ]
+}
+
+### Update a Post
+PUT {{serviceHost}}/post/update/{{postId}}
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+  "id": "{{postId}}",
+  "content": "My post updated",
+  "tags": [
+    "UPDATED_TAG"
+  ]
+}
+
+### Delete a Post
+DELETE {{serviceHost}}/post/delete/{{postId}}
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+### Get all Posts by UserId using flux filters
+POST {{serviceHost}}/post/all
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+  "tags": ["UPDATED_TAG"]
+}

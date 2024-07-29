@@ -22,3 +22,12 @@ services:
       - ./mock-oauth2-server/config.json:/app/config.json
     environment:
       JSON_CONFIG_PATH: /app/config.json
+
+  wiremock:
+    container_name: is-beautiful-server
+    image: "wiremock/wiremock:latest"
+    restart: always
+    ports:
+      - "8082:8080"
+    volumes:
+      - ./wiremock/is-beautiful-server:/home/wiremock

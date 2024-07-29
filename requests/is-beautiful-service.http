@@ -1,0 +1,4 @@
+### Check if something is beautiful
+GET {{isBeautifulHost}}/is-beautiful
+
+

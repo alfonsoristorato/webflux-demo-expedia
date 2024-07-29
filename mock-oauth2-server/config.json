@@ -13,16 +13,30 @@
       "requestMappings": [
         {
           "requestParam": "scope",
-          "match": "valid",
+          "match": "user1",
           "claims": {
-            "sub": "valid"
+            "sub": "user1"
           }
         },
         {
           "requestParam": "scope",
-          "match": "invalid",
+          "match": "user2",
           "claims": {
-            "sub": "invalid"
+            "sub": "user2"
+          }
+        },
+        {
+          "requestParam": "scope",
+          "match": "user3",
+          "claims": {
+            "sub": "user3"
+          }
+        },
+        {
+          "requestParam": "scope",
+          "match": "user4",
+          "claims": {
+            "sub": "user4"
           }
         }
       ]

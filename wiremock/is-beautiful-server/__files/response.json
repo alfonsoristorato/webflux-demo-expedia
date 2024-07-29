@@ -1,0 +1,3 @@
+{
+    "isBeautiful": "{{pickRandom 'true' 'false'}}"
+}
