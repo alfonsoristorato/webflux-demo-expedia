@@ -57,7 +57,7 @@ class PostServiceImpl(
         Mono.zip(
             postRepository.findByOrError(postId, "Post"),
             commentRepository.findAllByPostId(postId).collectList(),
-            isBeautifulService.isBeautifulResolver()
+            isBeautifulService.isBeautifulResolver(),
         )
             .map { (postEntity, commentEntities, isBeautiful) ->
                 postEntityMapper.toPostDto(postEntity, commentEntities, isBeautiful)
@@ -70,26 +70,28 @@ class PostServiceImpl(
                     .map { postEntityMapper.toPostDto(it) }
             }
 
-    override fun updatePost(updatePostBody: UpdatePostBody, postId: UUID): Mono<Post> =
+    override fun updatePost(
+        updatePostBody: UpdatePostBody,
+        postId: UUID,
+    ): Mono<Post> =
         getUserSub()
             .flatMap { userId ->
                 Mono.zip(
                     postRepository.findByOrErrorValidatingUserId(
                         postId,
                         "Post",
-                        { postEntity -> postEntity.userId == userId }),
+                        { postEntity -> postEntity.userId == userId },
+                    ),
                     commentRepository.findAllByPostId(postId).collectList(),
-                    isBeautifulService.isBeautifulResolver()
+                    isBeautifulService.isBeautifulResolver(),
                 )
                     .flatMap { (oldPostEntity, commentEntities, isBeautiful) ->
                         postRepository.save(
-                            postEntityMapper.toPostEntityUpdate(updatePostBody, oldPostEntity)
+                            postEntityMapper.toPostEntityUpdate(updatePostBody, oldPostEntity),
                         ).map { newPostEntity ->
                             postEntityMapper.toPostDto(newPostEntity, commentEntities, isBeautiful)
                         }
-
                     }
-
             }
 
     override fun deletePost(postId: UUID): Mono<Void> =
@@ -98,7 +100,7 @@ class PostServiceImpl(
                 postRepository.findByOrErrorValidatingUserId(
                     postId,
                     "Post",
-                    { postEntity -> postEntity.userId == userId }
+                    { postEntity -> postEntity.userId == userId },
                 )
                     .flatMap {
                         postRepository.deleteById(postId)
@@ -115,9 +117,12 @@ class PostServiceImpl(
                     .map { postEntityMapper.toPostDto(it) }
             }
 
-    override fun getAllPostsByUserIdWithCustomQuery(postFilters: PostFilters?): Flux<Post> {
-        TODO("Not yet implemented")
-    }
+    override fun getAllPostsByUserIdWithCustomQuery(postFilters: PostFilters?): Flux<Post> =
+        getUserSub()
+            .flatMapMany { userId ->
+                postRepository.findAllByUserIdAndFilters(userId, postFilters)
+                    .map { postEntityMapper.toPostDto(it) }
+            }
 
     private fun getUserSub(): Mono<String> =
         ReactiveSecurityContextHolder

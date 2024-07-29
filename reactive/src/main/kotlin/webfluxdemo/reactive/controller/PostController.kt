@@ -70,7 +70,6 @@ class PostController(private val postService: PostService) {
         postService.updatePost(updatePostBody, postId)
             .map { ResponseEntity(it, HttpStatus.CREATED) }
 
-
     // show why map would not work here
     @DeleteMapping("/delete/{postId}")
     fun deletePost(
@@ -86,7 +85,7 @@ class PostController(private val postService: PostService) {
     ): Mono<ResponseEntity<List<Post>>> =
         postService.getAllPostsByUserId(postFilters)
             .collectList()
-            .map { ResponseEntity(it,HttpStatus.OK) }
+            .map { ResponseEntity(it, HttpStatus.OK) }
 
     // show how to filter db results with custom query
     @PostMapping("/all/with-custom-query")
@@ -95,5 +94,5 @@ class PostController(private val postService: PostService) {
     ): Mono<ResponseEntity<List<Post>>> =
         postService.getAllPostsByUserIdWithCustomQuery(postFilters)
             .collectList()
-            .map { ResponseEntity(it,HttpStatus.OK) }
+            .map { ResponseEntity(it, HttpStatus.OK) }
 }

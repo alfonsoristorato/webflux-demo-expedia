@@ -56,3 +56,12 @@ Authorization: Bearer {{bearerToken}}
 {
   "tags": ["UPDATED_TAG"]
 }
+
+### Get all Posts by UserId using custom query
+POST {{serviceHost}}/post/all/with-custom-query
+Content-Type: application/json
+Authorization: Bearer {{bearerToken}}
+
+{
+  "tags": ["UPDATED_TAG"]
+}

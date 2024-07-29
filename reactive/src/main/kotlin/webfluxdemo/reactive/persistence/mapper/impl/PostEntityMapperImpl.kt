@@ -8,6 +8,7 @@ import webfluxdemo.reactive.dto.UpdatePostBody
 import webfluxdemo.reactive.persistence.entity.CommentEntity
 import webfluxdemo.reactive.persistence.entity.PostEntity
 import webfluxdemo.reactive.persistence.mapper.PostEntityMapper
+import java.util.UUID
 
 @Component
 class PostEntityMapperImpl : PostEntityMapper {
@@ -31,6 +32,27 @@ class PostEntityMapperImpl : PostEntityMapper {
             isBeautiful = isBeautiful,
         )
 
+    @Suppress("UNCHECKED_CAST")
+    override fun toPostDto(
+        dbResult: Map<String, Any>,
+        commentEntities: List<CommentEntity>?,
+        isBeautiful: Boolean?,
+    ): Post =
+        Post(
+            id = dbResult["id"] as UUID,
+            userId = dbResult["user_id"] as String,
+            content = dbResult["content"] as String,
+            tags = (dbResult["tags"] as? Array<String>?)?.toList() ?: emptyList(),
+            comments =
+                commentEntities?.map {
+                    Comment(
+                        userId = it.userId,
+                        comment = it.comment,
+                    )
+                },
+            isBeautiful = isBeautiful,
+        )
+
     override fun toPostEntityAdd(
         addPostBody: AddPostBody,
         userId: String,
@@ -43,10 +65,10 @@ class PostEntityMapperImpl : PostEntityMapper {
 
     override fun toPostEntityUpdate(
         updatePostBody: UpdatePostBody,
-        oldPostEntity: PostEntity
+        oldPostEntity: PostEntity,
     ): PostEntity =
         oldPostEntity.copy(
             content = updatePostBody.content,
             tags = updatePostBody.tags,
-            )
+        )
 }

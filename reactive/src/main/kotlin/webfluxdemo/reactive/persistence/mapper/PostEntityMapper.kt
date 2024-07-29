@@ -13,6 +13,12 @@ interface PostEntityMapper {
         isBeautiful: Boolean? = null,
     ): Post
 
+    fun toPostDto(
+        dbResult: Map<String, Any>,
+        commentEntities: List<CommentEntity>? = null,
+        isBeautiful: Boolean? = null,
+    ): Post
+
     fun toPostEntityAdd(
         addPostBody: AddPostBody,
         userId: String,

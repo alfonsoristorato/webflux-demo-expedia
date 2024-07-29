@@ -19,8 +19,14 @@ interface PostService {
 
     fun addPost(addPostBody: AddPostBody): Mono<Post>
 
-    fun updatePost(updatePostBody: UpdatePostBody, postId: UUID): Mono<Post>
+    fun updatePost(
+        updatePostBody: UpdatePostBody,
+        postId: UUID,
+    ): Mono<Post>
+
     fun deletePost(postId: UUID): Mono<Void>
+
     fun getAllPostsByUserId(postFilters: PostFilters?): Flux<Post>
+
     fun getAllPostsByUserIdWithCustomQuery(postFilters: PostFilters?): Flux<Post>
 }

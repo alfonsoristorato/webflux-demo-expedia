@@ -7,6 +7,6 @@ import webfluxdemo.reactive.persistence.entity.PostEntity
 import java.util.UUID
 
 @Repository
-interface PostRepository : ReactiveCrudRepository<PostEntity, UUID>{
+interface PostRepository : ReactiveCrudRepository<PostEntity, UUID>, PostCustomRepository {
     fun findAllByUserId(userId: String): Flux<PostEntity>
 }
