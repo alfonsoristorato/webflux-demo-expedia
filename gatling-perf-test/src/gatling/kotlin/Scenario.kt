@@ -38,7 +38,7 @@ class Scenario : Simulation() {
 
 
     private val duration = 300L
-    private val concurrentUsers = 70.0
+    private val concurrentUsers = 50.0
     init {
         setUp(
             getAllScenario("get all user 1").injectOpen(constantUsersPerSec(concurrentUsers).during(duration)).protocols(httpProtocolUser1),
