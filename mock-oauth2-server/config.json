@@ -38,6 +38,13 @@
           "claims": {
             "sub": "user4"
           }
+        },
+        {
+          "requestParam": "scope",
+          "match": "user5",
+          "claims": {
+            "sub": "user5"
+          }
         }
       ]
     }

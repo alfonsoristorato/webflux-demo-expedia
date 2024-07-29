@@ -42,6 +42,9 @@ dependencies {
 
     // Testing
     testImplementation(serviceLibs.test.spring.boot.starter.test)
+
+//    this is needed if you get an error about macOs DNS resolutions
+//    implementation("io.netty:netty-all")
 }
 
 kotlin {

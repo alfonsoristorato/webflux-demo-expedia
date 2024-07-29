@@ -1,4 +1,8 @@
 common:
+  jwt:
+    baseUri: http://localhost:8081
+  isBeautifulSerer:
+    baseUri: http://localhost:8082
   db:
     config:
       auth: &common-db-config-auth
@@ -26,10 +30,10 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8081/mocked
-          jwk-set-uri: http://localhost:8081/mocked/jwks
+          issuer-uri: ${common.jwt.baseUri}/mocked
+          jwk-set-uri: ${common.jwt.baseUri}/mocked/jwks
           jws-algorithms: ES384
 
 isBeautifulServer:
-  base-endpoint: http://localhost:8082
+  base-endpoint: ${common.isBeautifulSerer.baseUri}
   is-beautiful-path: /is-beautiful
