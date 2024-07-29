@@ -1,20 +1,20 @@
 ### Get a Post by Id without comments
-GET {{serviceHost}}/post/{{postId}}/without-comments
+GET {{serviceHost}}/post/{{postId1}}/without-comments
 Content-Type: application/json
 Authorization: Bearer {{bearerToken}}
 
 ### Get a Post by Id with comments flatMapping
-GET {{serviceHost}}/post/{{postId}}/with-comments-flatMapping
+GET {{serviceHost}}/post/{{postId1}}/with-comments-flatMapping
 Content-Type: application/json
 Authorization: Bearer {{bearerToken}}
 
 ### Get a Post by Id with comments zipping
-GET {{serviceHost}}/post/{{postId}}/with-comments-zipping
+GET {{serviceHost}}/post/{{postId1}}/with-comments-zipping
 Content-Type: application/json
 Authorization: Bearer {{bearerToken}}
 
 ### Get a Post by Id with comments zipping and is beautiful
-GET {{serviceHost}}/post/{{postId}}/with-comments-zipping-and-is-beautiful
+GET {{serviceHost}}/post/{{postId1}}/with-comments-zipping-and-is-beautiful
 Content-Type: application/json
 Authorization: Bearer {{bearerToken}}
 
@@ -31,12 +31,12 @@ Authorization: Bearer {{bearerToken}}
 }
 
 ### Update a Post
-PUT {{serviceHost}}/post/update/{{postId}}
+PUT {{serviceHost}}/post/update/{{postId11}}
 Content-Type: application/json
 Authorization: Bearer {{bearerToken}}
 
 {
-  "id": "{{postId}}",
+  "id": "{{postId1}}",
   "content": "My post updated",
   "tags": [
     "UPDATED_TAG"
@@ -44,7 +44,7 @@ Authorization: Bearer {{bearerToken}}
 }
 
 ### Delete a Post
-DELETE {{serviceHost}}/post/delete/{{postId}}
+DELETE {{serviceHost}}/post/delete/{{postId1}}
 Content-Type: application/json
 Authorization: Bearer {{bearerToken}}
 

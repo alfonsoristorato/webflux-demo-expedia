@@ -23,7 +23,6 @@ dependencies {
     // Spring and Configuration
     implementation(serviceLibs.spring.boot.starter.webflux)
     implementation(serviceLibs.spring.boot.starter.data.r2dbc)
-    implementation(serviceLibs.spring.boot.starter.actuator)
     implementation(serviceLibs.spring.boot.starter.oauth2.resource.server)
     implementation(serviceLibs.spring.boot.starter.security)
 
@@ -44,7 +43,7 @@ dependencies {
     testImplementation(serviceLibs.test.spring.boot.starter.test)
 
 //    this is needed if you get an error about macOs DNS resolutions
-//    implementation("io.netty:netty-all")
+    implementation("io.netty:netty-all")
 }
 
 kotlin {

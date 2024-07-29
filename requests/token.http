@@ -2,7 +2,7 @@
 POST {{jwtHost}}/mocked/token
 Content-Type: application/x-www-form-urlencoded
 
-scope = user1 &
+scope = user3 &
 grant_type = client_credentials &
 client_id = some-client-id &
 client_secret = some-client-secret

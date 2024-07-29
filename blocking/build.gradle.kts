@@ -4,6 +4,7 @@ plugins {
     alias(serviceLibs.plugins.gradle.ktlint)
     kotlin("jvm") version serviceLibs.versions.kotlin.plugin.version
     kotlin("plugin.spring") version serviceLibs.versions.kotlin.plugin.version
+    kotlin("plugin.jpa") version serviceLibs.versions.kotlin.plugin.version
 }
 
 group = "webfluxDemo"
@@ -21,7 +22,18 @@ repositories {
 
 dependencies {
     // Spring and Configuration
-    implementation(serviceLibs.spring.boot.starter)
+    implementation(serviceLibs.spring.boot.starter.web)
+    implementation(serviceLibs.spring.boot.starter.webflux)
+    implementation(serviceLibs.spring.boot.starter.data.jpa)
+    implementation(serviceLibs.spring.boot.starter.oauth2.resource.server)
+    implementation(serviceLibs.spring.boot.starter.security)
+
+    // Persistence
+    implementation(serviceLibs.postgresql)
+
+    // Flyway
+    implementation(serviceLibs.flyway.core)
+    implementation(serviceLibs.flyway.database.postgresql)
 
     // Kotlin specific
     implementation(serviceLibs.jackson.module.kotlin)
@@ -29,12 +41,15 @@ dependencies {
 
     // Testing
     testImplementation(serviceLibs.test.spring.boot.starter.test)
+
+    // this is needed if you get an error about macOs DNS resolutions
+    implementation("io.netty:netty-all")
 }
 
 kotlin {
     compilerOptions {
         freeCompilerArgs.addAll("-Xjsr305=strict")
-        allWarningsAsErrors = false
+        allWarningsAsErrors = true
     }
 }
 

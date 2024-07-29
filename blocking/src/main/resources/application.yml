@@ -13,19 +13,18 @@ common:
 logging:
   level:
     org.springframework: INFO
-    io.r2dbc.postgresql.QUERY: INFO
 
 spring:
   flyway:
     url: jdbc:${common.db.config.url}
     locations: classpath:db/migration
     <<: *common-db-config-auth
-  r2dbc:
-    url: r2dbc:${common.db.config.url}
+  datasource:
+    url: jdbc:${common.db.config.url}
     username: ${common.db.config.auth.user}
     password: ${common.db.config.auth.password}
   application:
-    name: reactive
+    name: blocking
   security:
     oauth2:
       resourceserver:
