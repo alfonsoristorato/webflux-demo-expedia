@@ -111,9 +111,9 @@ class PostServiceImpl(
         getUserSub()
             .flatMapMany { userId ->
                 postRepository.findAllByUserId(userId)
-                    .filter { postEntity ->
-                        postFilters?.tags?.let { tags -> postEntity.tags.containsAll(tags) } ?: true
-                    }
+//                    .filter { postEntity ->
+//                        postFilters?.tags?.let { tags -> postEntity.tags.containsAll(tags) } ?: true
+//                    }
                     .map { postEntityMapper.toPostDto(it) }
             }
 

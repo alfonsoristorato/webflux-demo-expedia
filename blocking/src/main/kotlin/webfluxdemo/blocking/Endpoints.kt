@@ -61,7 +61,7 @@ data class PostEntity(
     @Column(name = "user_id")
     val userId: String,
     val content: String,
-    // we do not map tags here as JPA requires converters for List<String>
+    // we do not map tags here as JPA requires further dependencies for List<Basic>
     @OneToMany(mappedBy = "post", cascade = [CascadeType.ALL], orphanRemoval = true)
     val comments: MutableList<CommentEntity>,
     @Column(name = "created_at")

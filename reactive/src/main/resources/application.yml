@@ -24,6 +24,9 @@ spring:
     url: r2dbc:${common.db.config.url}
     username: ${common.db.config.auth.user}
     password: ${common.db.config.auth.password}
+    pool:
+      initial-size: 10
+      max-size: 20
   application:
     name: reactive
   security:

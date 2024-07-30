@@ -7,12 +7,12 @@ class Scenario : Simulation() {
     // This is a very stupid load test and of course it could be written better - do not judge :),
     // but it should demonstrate which is faster between blocking and reactive and which can serve more requests
     private val tokenUser1 =
-        "eyJraWQiOiJtb2NrZWQiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJ1c2VyMSIsIm5iZiI6MTcyMjI3MDY0MywiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL21vY2tlZCIsImV4cCI6MTcyMjI3NDI0MywiaWF0IjoxNzIyMjcwNjQzLCJqdGkiOiJmMTViNWRlOS1kNjZiLTRlZDAtYWZhZC02YzUxM2I3MTZhOTMifQ.rgKSALCgWGA1B-dxZGDd0G19MtOFJzA-AXXOchIUwtpWThyTddWIctwsvHxAbrCHmXrSFyaPXxt9jwKw0syvfmKc--kFfGNroyRkW0mRCrntiCasnIFZ67ddrh5nLcyy"
+        "eyJraWQiOiJtb2NrZWQiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJ1c2VyMSIsIm5iZiI6MTcyMjMyOTEwMCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL21vY2tlZCIsImV4cCI6MTcyMjMzMjcwMCwiaWF0IjoxNzIyMzI5MTAwLCJqdGkiOiI3NDNkN2ZiNS1iNzM3LTRmZDctYjc4MS04ZmU0OTc2ODA0M2IifQ.NnLsz5Wc1wloQTUJ4xzmQe3fFT95qR-fhElSoSA-1ElE8_PpaqwhFm2IItJvP1-kanQ1jwr18P5WHbXAaKO0-jWOHbJvAuUPmJqXPMl_8rvMarkyBv0vyPISnaYP3Nqj"
 
     private val tokenUser2 =
-        "eyJraWQiOiJtb2NrZWQiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJ1c2VyMiIsIm5iZiI6MTcyMjI3MDY1NiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL21vY2tlZCIsImV4cCI6MTcyMjI3NDI1NiwiaWF0IjoxNzIyMjcwNjU2LCJqdGkiOiIzNjA0ZmY2YS01NWU5LTRjMmEtOTcyNy01NjdiYWNjMmYxZmMifQ.VDdBQf4uB7t-6wbqU961kSe1W-4mvoByTtyBQcsh43zhgHAXB3dpONN3eXTJrRG-h430-bDnB8HS4BmnFgA_FDna1B4ed1cubQWtsZGD3U8OYO4B1kd5wAkZH7rk8sm5"
+        "eyJraWQiOiJtb2NrZWQiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJ1c2VyMiIsIm5iZiI6MTcyMjMyOTExNCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL21vY2tlZCIsImV4cCI6MTcyMjMzMjcxNCwiaWF0IjoxNzIyMzI5MTE0LCJqdGkiOiI3MzdhZjljYi0xNGQzLTQ5MDUtYTdlNi00ZGFhZDU4NzRhYWIifQ.VGyCsMeZmJbi1SVBj6V4wvSAig5c6n1yi1Dybw9mInOMWXkpjbUm_9Uo0Oi7uY42kChEBQ1tGyqxRr7sdjtIq0m2lnV92lhLQLnzYiCjcuYluRCrwxdxGYATWg0dylXD"
     private val tokenUser3 =
-        "eyJraWQiOiJtb2NrZWQiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJ1c2VyMyIsIm5iZiI6MTcyMjI3MDY2NiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL21vY2tlZCIsImV4cCI6MTcyMjI3NDI2NiwiaWF0IjoxNzIyMjcwNjY2LCJqdGkiOiIwYjViZGM5Mi1iNDg5LTQ2ZjctOTg4Yy00NTQ4ZTg2NDgyYWMifQ.Yf4gPQC6ufofW8cFfYnD-PCEKVD4bs1lin8NCSz1ICiDbao-i7fEm0I9DsiUzUvQauZ3p68aGPwhzqQOeStlxTzJBAgERF9kP-i0NAUoTeNA13Rl1FAnyg7Y_JkdFLBt"
+        "eyJraWQiOiJtb2NrZWQiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzM4NCJ9.eyJzdWIiOiJ1c2VyMyIsIm5iZiI6MTcyMjMyOTEyNCwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgxL21vY2tlZCIsImV4cCI6MTcyMjMzMjcyNCwiaWF0IjoxNzIyMzI5MTI0LCJqdGkiOiJjYzY4M2ExZC0wODZiLTQ2MGItYTZiZi1hZTAwMzc2MGMyMTUifQ.ig3z6h0RavfE3GRteA1JfqgZJ76lIZ0YT86uwTDGMOti8XBk_8zuTmvaMd0rh7VvXyQRBrSAAoxobdy_aqTl3HReFPNvMT7WBF5h0YE01WIzx6hXPoYyKE8XAF8vZz0G"
 
     private val postId1 = "68299394-c544-4e61-955a-fba4b80f0eb3"
     private val postId2 = "d462e821-1aa9-4fdc-89e9-37b90ecf6203"
@@ -38,7 +38,7 @@ class Scenario : Simulation() {
 
 
     private val duration = 300L
-    private val concurrentUsers = 50.0
+    private val concurrentUsers = 60.0
     init {
         setUp(
             getAllScenario("get all user 1").injectOpen(constantUsersPerSec(concurrentUsers).during(duration)).protocols(httpProtocolUser1),
